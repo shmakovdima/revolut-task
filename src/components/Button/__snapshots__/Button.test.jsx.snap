@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component [Button] Basic render 1`] = `
+<button
+  class="sc-bdVaJa fYoLur"
+>
+  Test
+</button>
+`;
+
+exports[`Component [Button] ClassName prop 1`] = `
+<Button
+  className="test-class"
+>
+  <styled.button
+    className="test-class"
+    disabled={false}
+    onClick={[Function]}
+  >
+    <StyledComponent
+      className="test-class"
+      disabled={false}
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "lastClassName": "fYoLur",
+            "rules": Array [
+              "
+  outline: none;
+  border: none;
+  padding: 16px 80px;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: ",
+              [Function],
+              ";
+  background: ",
+              [Function],
+              ";
+  cursor: ",
+              [Function],
+              ";
+  transition: all ",
+              [Function],
+              " ease 0s;
+
+  &:hover {
+    background: ",
+              [Function],
+              ";
+  }
+",
+            ],
+          },
+          "displayName": "styled.button",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "button",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+      onClick={[Function]}
+    >
+      <button
+        className="test-class sc-bdVaJa fYoLur"
+        disabled={false}
+        onClick={[Function]}
+      >
+        ClassName
+      </button>
+    </StyledComponent>
+  </styled.button>
+</Button>
+`;
+
+exports[`Component [Button] Disabled prop 1`] = `
+<button
+  class="sc-bdVaJa dTmBxK"
+  disabled=""
+>
+  Test
+</button>
+`;
