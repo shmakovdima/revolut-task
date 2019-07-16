@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component [IndexPageView] Basic render 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.div>
+      <Connect(Component)
+        type="from"
+      />
+      <Connect(Component) />
+    </styled.div>
+  </styled.div>
+  <styled.div
+    grey={true}
+  >
+    <styled.div>
+      <Connect(Component)
+        type="to"
+      />
+      <Styled(Component)
+        disabled={false}
+        onClick={[MockFunction]}
+      >
+        Exchange
+      </Styled(Component)>
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

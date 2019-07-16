@@ -11,6 +11,7 @@ describe('Component [Button]', () => {
 
   test('Disabled prop', () => {
     const component = render(<Button disabled>Test</Button>);
+    expect(component.prop('disabled')).toEqual(true);
     expect(component).toMatchSnapshot();
   });
 
@@ -35,6 +36,7 @@ describe('Component [Button]', () => {
         Test
       </Button>,
     );
+    expect(component.prop('disabled')).toEqual(true);
     component.simulate('click');
     expect(handleClick).not.toHaveBeenCalled();
   });

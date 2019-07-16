@@ -1,8 +1,9 @@
+import Decimal from 'decimal.js';
 import { createSelector } from 'reselect';
 
 import { formatAndRound } from '../../utils';
-import { DECIMAL_PLACES } from '../../constants';
 import { getCurrencyFrom, getCurrencyTo, getAmountFrom } from './userInputs';
+
 
 const getPocket = state => state.get('pocket');
 
@@ -23,10 +24,10 @@ export const getPocketCurrencyValue = (state, type) => createSelector(
 
 export const getPocketCurrencyFormatted = (state, type) => formatAndRound(
   getPocketCurrencyValue(state, type),
-  DECIMAL_PLACES,
 );
 
 export const isDisabled = createSelector(
   [getPocketCurrencyFrom, getAmountFrom],
-  (pocketValue, amount) => !!(amount && pocketValue && pocketValue.lt(amount)),
+  (pocketValue, amount) => !!(pocketValue.isZero()
+    || (Decimal.isDecimal(amount) && pocketValue.lt(amount))),
 );

@@ -24,24 +24,28 @@ const ExchangeItemView = ({
     <StyledContainer>
       <StyledRow>
         <StyledSelect
+          name="select"
           className="currency-select"
           classNamePrefix="cs"
           options={options}
           value={{ value: currency, label: currency }}
           onChange={e => changeCurrency(e.value, type)}
+          isSearchable={false}
           placeholder=""
         />
-        <StyledInput
-          placeholder={isFromCurrency ? '– 0' : '+ 0'}
-          allowNegative={false}
-          thousandSeparator=" "
-          decimalScale={2}
-          prefix={isFromCurrency ? '– ' : '+ '}
-          value={amount}
-          error={disabledInFrom ? 1 : 0}
-          maxLength={16}
-          onInput={e => onInput(e.target.value)}
-        />
+        <div>
+          <StyledInput
+            placeholder={isFromCurrency ? '– 0' : '+ 0'}
+            allowNegative={false}
+            thousandSeparator=" "
+            decimalScale={2}
+            prefix={isFromCurrency ? '– ' : '+ '}
+            value={amount}
+            error={disabledInFrom ? 1 : 0}
+            maxLength={16}
+            onInput={e => onInput(e.target.value)}
+          />
+        </div>
       </StyledRow>
       <StyledRow>
         <BalanceText>
@@ -49,7 +53,7 @@ const ExchangeItemView = ({
           <StyledIcon icon={getCurrencyIcon(currency)} size="1x" />
           {balance}
         </BalanceText>
-        {disabledInFrom && <ErrorText>You can&#39;t afford it</ErrorText>}
+        {disabledInFrom && <ErrorText>exceeds balance</ErrorText>}
       </StyledRow>
     </StyledContainer>
   );
@@ -58,7 +62,7 @@ const ExchangeItemView = ({
 
 ExchangeItemView.propTypes = {
   type: PropTypes.oneOf(['to', 'from']).isRequired,
-  currency: PropTypes.oneOf(getCurrencyTypes()).isRequired,
+  currency: PropTypes.oneOf(getCurrencyTypes).isRequired,
   balance: PropTypes.string.isRequired,
   amount: PropTypes.string.isRequired,
   changeCurrency: PropTypes.func.isRequired,
@@ -139,6 +143,7 @@ const StyledInput = styled(NumberFormat)`
   background: transparent;
   text-align: right;
   font-size: 3rem;
+  width: 100%;
   color: ${props => (props.error ? props.theme.textGrey : 'black')};
 `;
 

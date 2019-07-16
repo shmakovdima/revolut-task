@@ -33,7 +33,7 @@ function* startExchange() {
     ? pocketFrom.minus(amountFrom)
     : pocketFrom;
   const pocketToNew = Decimal.isDecimal(amountTo)
-    ? pocketTo.minus(amountTo)
+    ? pocketTo.plus(amountTo)
     : pocketTo;
 
   yield put(changeAmountResultAction({ amountFrom: '', amountTo: '' }));

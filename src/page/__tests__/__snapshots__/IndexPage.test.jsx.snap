@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component [IndexPage] Basic render 1`] = `
+<Memo(IndexPageView)
+  disabled={false}
+  startExchange={[MockFunction]}
+/>
+`;

@@ -1,5 +1,3 @@
-import { Decimal } from 'decimal.js';
-
 import {
   CHANGE_CURRENCY,
   CHANGE_AMOUNT,
@@ -28,7 +26,7 @@ export const swapCurrencyChangedAction = payload => ({
 
 export const changeAmountAction = payload => ({
   type: CHANGE_AMOUNT,
-  payload: { ...payload, value: new Decimal(payload.value) },
+  payload,
 });
 
 export const changeAmountFromAction = payload => ({

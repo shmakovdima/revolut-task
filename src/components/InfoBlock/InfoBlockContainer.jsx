@@ -32,8 +32,8 @@ InfoBlock.propTypes = {
   costOne: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
   isError: PropTypes.bool.isRequired,
-  currencyFrom: PropTypes.oneOf(getCurrencyTypes()).isRequired,
-  currencyTo: PropTypes.oneOf(getCurrencyTypes()).isRequired,
+  currencyFrom: PropTypes.oneOf(getCurrencyTypes).isRequired,
+  currencyTo: PropTypes.oneOf(getCurrencyTypes).isRequired,
   swapCurrency: PropTypes.func.isRequired,
 };
 
@@ -49,5 +49,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   swapCurrency: () => dispatch(swapCurrencyAction()),
 });
+
+export { InfoBlock };
 
 export default connect(mapStateToProps, mapDispatchToProps)(React.memo(InfoBlock));

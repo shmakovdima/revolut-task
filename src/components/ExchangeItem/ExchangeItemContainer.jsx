@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import without from 'lodash.without';
+import { Decimal } from 'decimal.js';
 
-import { getCurrencyTypes } from '../../utils';
+import { getCurrencyTypes, roundDecimal } from '../../utils';
 import {
   getAmountFormatted,
   getCurrency,
@@ -29,7 +30,7 @@ const ExchangeItem = ({
   ...props
 }) => {
   const availableCurrencies = without(
-    getCurrencyTypes(),
+    getCurrencyTypes,
     currency,
     currencyAnother,
   );
@@ -40,8 +41,10 @@ const ExchangeItem = ({
   }));
 
   const onInput = (value) => {
-    const trimValue = value ? value.replace(/[^0-9.]/gi, '') : 0;
-    changeAmount(parseFloat(trimValue), type);
+    const trimValue = value ? value.replace(/[^0-9.]/gi, '') : '';
+    const valueMath = !Number.isNaN(parseFloat(trimValue)) ? new Decimal(parseFloat(trimValue)) : '';
+    const finalDecimal = valueMath ? roundDecimal(valueMath) : '';
+    changeAmount(finalDecimal, type);
   };
 
   return (
@@ -49,7 +52,6 @@ const ExchangeItem = ({
       {...props}
       onInput={onInput}
       options={options}
-      availableCurrencies={availableCurrencies}
       type={type}
       currency={currency}
     />
@@ -58,8 +60,8 @@ const ExchangeItem = ({
 
 ExchangeItem.propTypes = {
   type: PropTypes.oneOf(['to', 'from']).isRequired,
-  currency: PropTypes.oneOf(getCurrencyTypes()).isRequired,
-  currencyAnother: PropTypes.oneOf(getCurrencyTypes()).isRequired,
+  currency: PropTypes.oneOf(getCurrencyTypes).isRequired,
+  currencyAnother: PropTypes.oneOf(getCurrencyTypes).isRequired,
   balance: PropTypes.string.isRequired,
   amount: PropTypes.string.isRequired,
   changeCurrency: PropTypes.func.isRequired,
@@ -79,6 +81,8 @@ const mapDispatchToProps = dispatch => ({
   changeCurrency: (value, type) => dispatch(changeCurrencyAction({ value, type })),
   changeAmount: (value, type) => dispatch(changeAmountAction({ value, type })),
 });
+
+export { ExchangeItem };
 
 export default connect(
   mapStateToProps,

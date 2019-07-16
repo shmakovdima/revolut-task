@@ -52,15 +52,16 @@ const ExchangeBlock = styled.div`
   justify-content: center;
   align-items: center;
   height: 50%;
+  padding: 0 20px;
   background: ${props => props.grey && props.theme.grey};
 `;
 
 const LayoutContainer = styled.div`
   width: 100%;
   max-width: 600px;
-  padding: 10px;
   position: relative;
   height: 100%;
+  padding: 10px;
   flex-direction: column;
   display: flex;
   justify-content: center;

@@ -35,4 +35,6 @@ const mapDispatchToProps = dispatch => ({
   startExchange: () => dispatch(startExchangeAction()),
 });
 
+export { IndexPage };
+
 export default connect(mapStateToProps, mapDispatchToProps)(React.memo(IndexPage));

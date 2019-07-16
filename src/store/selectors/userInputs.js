@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 import { formatAndRound } from '../../utils';
-import { DECIMAL_PLACES } from '../../constants';
 
 const getUserInputs = state => state.get('userInputs');
 
@@ -27,7 +26,6 @@ export const getAmount = (state, type) => createSelector(
 
 export const getAmountFormatted = (state, type) => formatAndRound(
   getAmount(state, type),
-  DECIMAL_PLACES,
 );
 
 export const getUserInputLast = state => getUserInputs(state).get('active_input');
